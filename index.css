@@ -263,3 +263,40 @@ button:hover::before {
     transform: scaleX(1);
     transform-origin: bottom left;
 }
+
+
+.animated-success-image {
+    width: 300px;
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .about-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .success-image-container {
+    display: flex;
+    justify-content: center; /* מרכז אופקית */
+    align-items: center; /* מרכז אנכית */
+    
+}
+
+.success-image {
+    width: 150px;
+    height: 100px;
+    
+}
