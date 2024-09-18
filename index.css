@@ -1,3 +1,11 @@
+:root {
+    --main-color: #009688;
+    --accent-color: #00bfae;
+    --text-color: #333;
+    --light-color: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +16,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     background-color: #f4f4f4;
-    color: #333;
+    color: var(--text-color);
 }
 
 /* עיצוב לה-container */
@@ -20,64 +28,59 @@ body {
 
 /* עיצוב ל-header */
 header {
-    background-color: #009687; /* צבע חדשני של ירוק כהה */
-    color: white;
+    background: linear-gradient(to right, var(--main-color), var(--accent-color));
+    color: var(--light-color);
     padding: 2rem 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px var(--shadow-color);
 }
 
-header h1 {
+.header-content h1 {
     text-align: center;
     font-size: 2.8rem;
     font-weight: 600;
+    position: relative;
+    overflow: hidden;
 }
 
-/* עיצוב ל-nav */
-nav ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    padding: 1rem 0;
+.header-content h1::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-color);
+    bottom: 0;
+    left: -100%;
+    transition: left 0.4s ease;
 }
 
-nav ul li {
-    margin: 0 1.5rem;
+.header-content h1:hover::before {
+    left: 0;
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
-}
-
-nav ul li a:hover {
-    color: #cddc39; /* צבע חדש של ירוק כהה להדגשה */
+header img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+    box-shadow: 0 6px 12px var(--shadow-color);
 }
 
 /* עיצוב ל-sections */
 section {
     padding: 4rem 0;
+    animation: fadeInUp 0.6s ease-out;
 }
 
 section h2 {
     text-align: center;
     margin-bottom: 1rem;
     font-size: 2.5rem;
-    color: #009688;
+    color: var(--main-color);
     font-weight: 600;
 }
 
-/* עיצוב ל-about-section */
-.about-section p {
-    text-align: center;
-    font-size: 1.2rem;
-    line-height: 1.8;
-    margin: 0 auto;
-    max-width: 800px;
-}
-
-/* עיצוב ל-services-section */
+/* אנימציה של השקפים */
 .services-section ul {
     list-style: none;
     padding: 0;
@@ -87,21 +90,59 @@ section h2 {
     text-align: center;
     font-size: 1.2rem;
     margin: 1rem 0;
-    background: #ffffff;
+    background: var(--light-color);
     border: 1px solid #dddddd;
     border-radius: 8px;
     padding: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px var(--shadow-color);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.services-section ul li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--main-color);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+.services-section ul li:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+.services-section ul li:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* אנימציה בסקול */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* עיצוב ל-contact-section */
 .contact-section {
     text-align: center;
     padding: 2rem;
-    background-color: #009688;
-    color: white;
+    background-color: var(--main-color);
+    color: var(--light-color);
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px var(--shadow-color);
 }
 
 .contact-section p {
@@ -112,14 +153,14 @@ section h2 {
 .contact-section .whatsapp-button {
     display: inline-block;
     background-color: #25D366;
-    color: white;
+    color: var(--light-color);
     padding: 15px 30px;
     text-align: center;
     text-decoration: none;
     border-radius: 25px;
     font-size: 1.4rem;
     margin-top: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px var(--shadow-color);
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
@@ -131,7 +172,7 @@ section h2 {
 /* עיצוב ל-footer */
 footer {
     background-color: #333;
-    color: white;
+    color: var(--light-color);
     text-align: center;
     padding: 1rem 0;
     position: relative;
@@ -144,36 +185,81 @@ footer p {
     font-size: 1rem;
 }
 
-img{
-    width: 300px;
-    height: 300px;
-    margin-left: 35%;
+/* כפתורים עם אנימציה */
+button {
+    background-color: var(--main-color);
+    color: var(--light-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: transform 0.6s ease;
+    transform: translate(-50%, -50%) scale(0);
     border-radius: 50%;
 }
 
-@media (min-width: 600px) and (max-width: 900px) {
-    body {
-        font-size: 14px; /* גודל טקסט מותאם לטאבלטים */
-    }
-    header img {
-        width: 220px; /* התאם את גודל התמונה */
-        height: 220px;
-        margin-left: 35%;
-    }
+button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
 }
 
-/* מכשירים ניידים (רוחב עד 600px) */
-@media (max-width: 600px) {
-    body {
-        font-size: 12px; /* גודל טקסט מותאם למכשירים ניידים */
-    }
-    header img {
-        width: 200px; /* התאם את גודל התמונה */
-        height: 200px;
-        margin-left: 22%;
 
-    }
-    header h1 {
-        font-size: 1.5rem; /* גודל כותרת מותאם למכשירים ניידים */
-    }
+.about-section {
+    background-color: #f9f9f9;
+    padding: 4rem 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.about-section p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #333;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about-section p::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--main-color), var(--accent-color));
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.4s ease;
+}
+
+.about-section p:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.about-section p:hover::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
