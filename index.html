@@ -101,4 +101,59 @@
       </div>
     </footer>
   </body>
+
+
+ <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+  <script type="module">
+    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+    createChat({
+      webhookUrl: 'https://maayanswisa9.app.n8n.cloud/webhook/854c829c-2ce6-426f-89e2-ed44d33182f3/chat',
+      webhookConfig: {
+        method: 'POST',
+        headers: {}
+      },
+      target: '#n8n-chat',
+      mode: 'window',
+      chatInputKey: 'chatInput',
+      chatSessionKey: 'sessionId',
+      metadata: {},
+      showWelcomeScreen: false,
+      defaultLanguage: 'he',
+      initialMessages: ['היי! איך אפשר לעזור לך היום?'],
+      i18n: {
+        he: {
+          title: 'מעיין',
+          subtitle: "כאן לכל שאלה!",
+          footer: '',
+          getStarted: 'התחל שיחה',
+          inputPlaceholder: 'כתבו לי כאן...',
+        },
+      },
+      styleOverrides: {
+        '--n8n-chat-background-color': '#ffffff',
+        '--n8n-chat-header-background-color': '#004080',
+        '--n8n-chat-header-text-color': '#ffffff',
+        '--n8n-chat-message-bot-background-color': '#eaf2ff',
+        '--n8n-chat-message-user-background-color': '#004080',
+        '--n8n-chat-message-user-text-color': '#ffffff',
+        '--n8n-chat-font-family': "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+        '--n8n-chat-input-border-radius': '20px',
+        '--n8n-chat-button-background-color': '#004080',
+        '--n8n-chat-button-text-color': '#ffffff',
+        '--n8n-chat-button-hover-background-color': '#0059b3',
+
+        '--n8n-chat-header-padding': '0.1rem 1rem',
+        '--n8n-chat-header-title-margin': '0',
+        '--n8n-chat-header-subtitle-margin': '0.1rem 0 0 0'
+      }
+    });
+  </script>
+
+
+
+
+
+
+  
 </html>
